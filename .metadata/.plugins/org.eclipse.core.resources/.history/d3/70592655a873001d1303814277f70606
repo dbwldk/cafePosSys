@@ -1,0 +1,8 @@
+package cafe.vo;
+
+public class menuTypeVO {
+	
+	
+	//getters & setters
+	
+}

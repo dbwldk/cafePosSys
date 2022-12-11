@@ -1,0 +1,134 @@
+package cafe.vo;
+
+public class menuVO {
+	private String menuId; //_ 미포함 4글자, 영어 대문자
+	private String menuName; //한글 이름
+	
+	private int menuType; //auto increase
+	private String typeName; //한글 이름
+	
+	private boolean soldOutCheck; //품절 여부(0: 품절, 1: 판매중)
+	
+	//getters & setters
+	public String getIngId() {
+		return ingId;
+	}
+	public void setIngId(String ingId) {
+		this.ingId = ingId;
+	}
+	
+	public String getIngName() {
+		return ingName;
+	}
+	public void setIngName(String ingName) {
+		this.ingName = ingName;
+	}
+	
+	public String getEXP() {
+		return EXP;
+	}
+	public void setEXP(String eXP) {
+		EXP = eXP;
+	}
+	
+	public int getIngCnt() {
+		return ingCnt;
+	}
+	public void setIngCnt(int ingCnt) {
+		this.ingCnt = ingCnt;
+	}
+	
+	public String getMenuId() {
+		return menuId;
+	}
+	public void setMenuId(String menuId) {
+		this.menuId = menuId;
+	}
+	
+	public String getMenuName() {
+		return menuName;
+	}
+	public void setMenuName(String menuName) {
+		this.menuName = menuName;
+	}
+	
+	public int getMenuType() {
+		return menuType;
+	}
+	public void setMenuType(int menuType) {
+		this.menuType = menuType;
+	}
+	
+	public String getTypeName() {
+		return typeName;
+	}
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+	
+	public boolean isSoldOutCheck() {
+		return soldOutCheck;
+	}
+	public void setSoldOutCheck(boolean soldOutCheck) {
+		this.soldOutCheck = soldOutCheck;
+	}
+	
+	public String getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+	
+	public String getOrderTime() {
+		return orderTime;
+	}
+	public void setOrderTime(String orderTime) {
+		this.orderTime = orderTime;
+	}
+	
+	public String getOrderCnt() {
+		return orderCnt;
+	}
+	public void setOrderCnt(String orderCnt) {
+		this.orderCnt = orderCnt;
+	}
+	
+	public int getRecipeId() {
+		return recipeId;
+	}
+	public void setRecipeId(int recipeId) {
+		this.recipeId = recipeId;
+	}
+	
+	public String getSellId() {
+		return sellId;
+	}
+	public void setSellId(String sellId) {
+		this.sellId = sellId;
+	}
+	
+	public String getSellTime() {
+		return sellTime;
+	}
+	public void setSellTime(String sellTime) {
+		this.sellTime = sellTime;
+	}
+	
+	public int getSellCnt() {
+		return sellCnt;
+	}
+	public void setSellCnt(int sellCnt) {
+		this.sellCnt = sellCnt;
+	}
+	
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	
+	
+
+}

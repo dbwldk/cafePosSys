@@ -1,0 +1,86 @@
+package cafe.controller;
+
+import java.util.ArrayList;
+
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+
+import cafe.dao.cafeDAO;
+import cafe.view.cafeIngView;
+import cafe.view.cafeMenuView;
+import cafe.view.cafeOrderView;
+import cafe.view.cafePosView;
+import cafe.view.cafeSellView;
+import cafe.vo.cafeVO;
+
+public class cafeController extends JFrame {
+	//전역
+	cafePosView posPan;
+	cafeMenuView menuPan;
+	cafeIngView ingPan;
+	cafeOrderView ordPan;
+	cafeSellView sellPan;
+	
+	cafeDAO dao;
+	ArrayList<cafeVO> cafeVOList;
+	
+	JComboBox<String> combo;
+	JTable table;
+	
+	
+	public cafeController() {
+		JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP);
+		
+		dao = new cafeDAO();
+		//posPan
+		posPan = new cafePosView();
+		tab.add("Pos", posPan);
+		
+		cafeVOList = dao.select(3, "");
+		int typeSize = cafeVOList.size();
+		
+		posPan.setCafeVOList(cafeVOList);
+		posPan.setMenuHeader();
+		
+		for(int a = 0; a < typeSize; a++) {
+			
+		}
+		
+		//menuPan
+		menuPan = new cafeMenuView();
+		tab.add("메뉴", menuPan);
+		
+		
+		//ingPan
+		ingPan = new cafeIngView();
+		tab.add("재료", ingPan);
+		
+		
+		//ordPan
+		/*
+		ordPan = new cafeOrderView();
+		tab.add("발주", ordPan);
+		*/
+		
+		
+		//sellPan
+		sellPan = new cafeSellView();
+		tab.add("주문 내역", sellPan);
+		
+		//
+		add(tab);
+		setTitle("가게관리");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setBounds(600, 300, 800, 600);
+		setVisible(true);
+		
+	}
+	
+	//main
+	public static void main(String[] args) {
+		new cafeController();
+	}
+
+}

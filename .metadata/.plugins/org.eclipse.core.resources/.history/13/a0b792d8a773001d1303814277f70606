@@ -1,0 +1,21 @@
+package cafe.vo;
+
+public class inventoryVO {
+	private String ingId; //영어 대문자로
+	private int ingCnt; //재료 재고
+	
+	//getters & setters
+	public String getIngId() {
+		return ingId;
+	}
+	public void setIngId(String ingId) {
+		this.ingId = ingId;
+	}
+	
+	public int getIngCnt() {
+		return ingCnt;
+	}
+	public void setIngCnt(int ingCnt) {
+		this.ingCnt = ingCnt;
+	}
+}

@@ -1,0 +1,29 @@
+package cafe.vo;
+
+public class cafeVO {
+	private int ingId;
+	private String ingName;
+	private String EXP;
+	private int ingCnt;
+	
+	private int menuId;
+	private String menuName;
+	private int menuType;
+	private String typeName;
+	
+	private boolean soldOutCheck;
+	
+	private String orderId;
+	private String orderTime;
+	private String orderCnt;
+	
+	private int recipeId;
+	
+	private String sellId;
+	private String sellTime;
+	private int sellCnt;
+	private int total;
+	
+	
+
+}

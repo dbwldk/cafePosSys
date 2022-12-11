@@ -1,0 +1,18 @@
+package cafe.vo;
+
+public class sellVO {
+	private String menuId; //_ 미포함 4글자, 영어 대문자
+	
+	
+	
+	
+	//getters & setters
+	public String getMenuId() {
+		return menuId;
+	}
+	public void setMenuId(String menuId) {
+		this.menuId = menuId;
+	}
+	
+	
+}

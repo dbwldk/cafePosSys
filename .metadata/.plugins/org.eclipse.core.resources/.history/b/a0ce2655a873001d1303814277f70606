@@ -1,0 +1,15 @@
+package cafe.vo;
+
+public class inventoryVO {
+	
+	
+	//getters & setters
+	public String getIngId() {
+		return ingId;
+	}
+	public void setIngId(String ingId) {
+		this.ingId = ingId;
+	}
+	
+	
+}

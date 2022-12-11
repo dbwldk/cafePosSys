@@ -1,0 +1,29 @@
+package cafe.vo;
+
+public class ingredientVO {
+	private String ingId; //영어 대문자로
+	private String ingName; //한글 이름
+	private String EXP; //유통기한(yyyy.mm.dd)
+	
+	//getters & setters
+	public String getIngId() {
+		return ingId;
+	}
+	public void setIngId(String ingId) {
+		this.ingId = ingId;
+	}
+	
+	public String getIngName() {
+		return ingName;
+	}
+	public void setIngName(String ingName) {
+		this.ingName = ingName;
+	}
+	
+	public String getEXP() {
+		return EXP;
+	}
+	public void setEXP(String eXP) {
+		EXP = eXP;
+	}
+}

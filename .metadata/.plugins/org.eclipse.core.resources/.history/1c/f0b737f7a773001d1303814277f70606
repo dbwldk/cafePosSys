@@ -1,0 +1,39 @@
+package cafe.vo;
+
+public class orderVO {
+	private String ingId; //영어 대문자로
+	
+	private String orderId; //날짜_재료(ex. 20221212_BEAN) 형식
+	private String orderTime; //발주 시각(현재 시간 받아서 문자열로 바꾼 후 저장)(yyyy.mm.dd hh:mm:ss)
+	private int orderCnt; //발주(재료) 개수
+	
+	//getters & setters
+	public String getIngId() {
+		return ingId;
+	}
+	public void setIngId(String ingId) {
+		this.ingId = ingId;
+	}
+	
+	public String getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+	
+	public String getOrderTime() {
+		return orderTime;
+	}
+	public void setOrderTime(String orderTime) {
+		this.orderTime = orderTime;
+	}
+	
+	public int getOrderCnt() {
+		return orderCnt;
+	}
+	public void setOrderCnt(int orderCnt) {
+		this.orderCnt = orderCnt;
+	}
+
+}

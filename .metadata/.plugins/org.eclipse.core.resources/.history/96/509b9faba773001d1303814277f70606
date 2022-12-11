@@ -1,0 +1,42 @@
+package cafe.vo;
+
+public class cafeVO {
+	private String ingId; //영어 대문자로
+	private String ingName; //한글 이름
+	private String EXP; //유통기한(yyyy.mm.dd)
+	
+	private int ingCnt; //재료 재고
+	
+	//getters & setters
+	public String getIngId() {
+		return ingId;
+	}
+	public void setIngId(String ingId) {
+		this.ingId = ingId;
+	}
+	
+	public String getIngName() {
+		return ingName;
+	}
+	public void setIngName(String ingName) {
+		this.ingName = ingName;
+	}
+	
+	public String getEXP() {
+		return EXP;
+	}
+	public void setEXP(String eXP) {
+		EXP = eXP;
+	}
+	
+	
+	public int getIngCnt() {
+		return ingCnt;
+	}
+	public void setIngCnt(int ingCnt) {
+		this.ingCnt = ingCnt;
+	}
+	
+	
+	
+}
