@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 
@@ -27,17 +29,25 @@ public class cafeController extends JFrame {
 	cafeSellView sellPan;
 	
 	cafeDAO dao;
+	cafeVO vo;
 	ArrayList<cafeVO> cafeVOList;
 	
 	JComboBox<String> combo;
 	JTable table;
+	
+	JButton btnStop;
+	JButton btnPay;
+	ArrayList<JButton> menuBtns;
+	JPanel resultPan;
+	
+	int total = 0;
 	
 	
 	public cafeController() {
 		JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP);
 		
 		dao = new cafeDAO();
-		cafeVO vo = null;
+		vo = null;
 		
 		//posPan
 		posPan = new cafePosView();
@@ -51,20 +61,33 @@ public class cafeController extends JFrame {
 		ArrayList<String> btnsHeaders = posPan.setMenuHeader();
 		System.out.println(btnsHeaders);
 		
+		cafeVOList = dao.select_def(2);
+		int btnsCnt = cafeVOList.size();
+		
+		
 		for(int a = 0; a < typeSize; a++) {
 			cafeVOList = dao.select_where(3, 5, btnsHeaders.get(a));
 			vo = cafeVOList.get(0); //타입 이름이 같은 항목은 해당 테이블에서 하나밖에 없으므로
 			int ind = vo.getMenuType();
 			
 			cafeVOList = dao.select_where(2, 4, ind+"");
+			
 			posPan.setCafeVOList(cafeVOList);
 			
 			posPan.setMenuBtns();
 			posPan.setMenu(a);
 		}
 		
-		JButton btnStop = posPan.getBtnStop();
-		JButton btnPay = posPan.getBtnPay();
+		menuBtns = posPan.getMenuBtns();
+		
+		btnStop = posPan.getBtnStop();
+		btnPay = posPan.getBtnPay();
+		
+		resultPan = posPan.getResultPan();
+		
+		for(int i = 0; i < menuBtns.size(); i++) {
+			menuBtns.get(i).addActionListener(btnL);
+		}
 		
 		btnStop.addActionListener(btnL);
 		btnPay.addActionListener(btnL);
@@ -104,7 +127,26 @@ public class cafeController extends JFrame {
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			if(e.getSource() == btnStop) {
+				
+			} else if(e.getSource() == btnPay) {
+				
+			} else {
+				String btnName = e.getActionCommand();
+				
+				cafeVOList = dao.select_where(2, 7, btnName);
+				vo = cafeVOList.get(0);
+				
+				int price = vo.getPrice();
+				
+				total += price;
+				
+				JLabel lblTotal = new JLabel("총액: " + total);
+				
+				resultPan.add(lblTotal);
+				
+				
+			}
 		}
 	};
 	

@@ -17,6 +17,8 @@ public class cafeVO {
 	private String menuId; //_ 미포함 4글자, 영어 대문자
 	private String menuName; //한글 이름
 	
+	private int price; //가격
+	
 	private boolean soldOutCheck; //품절 여부(0: 품절, 1: 판매중)
 	
 	//orderVO
@@ -91,6 +93,13 @@ public class cafeVO {
 	}
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;
+	}
+	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	
 	public boolean isSoldOutCheck() {

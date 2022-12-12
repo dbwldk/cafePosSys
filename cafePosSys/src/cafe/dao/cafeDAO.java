@@ -20,7 +20,7 @@ public class cafeDAO {
 	//검색 기준 테이블: 재료, 재고, 메뉴, 메뉴 종류, 발주, 요리법, 주문내역
 	String[] searchIndexes = {"ing_id", "ing_name", "EXP", "cnt", "type_id", "type_name", "menu_id",
 			"menu_name", "sold_out", "order_id", "order_time", "cnt", "recipe_id", "sell_id",
-			"sell_time", "menu_cnt", "total"};
+			"sell_time", "menu_cnt", "total", "price"};
 	//순서 = > vo와 같음
 	
 	//select
@@ -58,6 +58,7 @@ public class cafeDAO {
 					vo.setMenuName(rs.getString("menu_name"));
 					vo.setMenuType(rs.getInt("type_id"));
 					vo.setSoldOutCheck(rs.getBoolean("sold_out"));
+					vo.setPrice(rs.getInt("price"));
 					break;
 					
 				case 3:
@@ -158,6 +159,7 @@ public class cafeDAO {
 					vo.setMenuName(rs.getString("menu_name"));
 					vo.setMenuType(rs.getInt("type_id"));
 					vo.setSoldOutCheck(rs.getBoolean("sold_out"));
+					vo.setPrice(rs.getInt("price"));
 					break;
 					
 				case 3:

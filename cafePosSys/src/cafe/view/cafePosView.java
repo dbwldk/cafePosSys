@@ -27,18 +27,21 @@ public class cafePosView extends JPanel implements Runnable{
 	
 	ArrayList<String> btnsHeaders; //menu header(type)
 	ArrayList<String> btnNames; //menu name
+	ArrayList<JButton> btns;
 	
 	JTabbedPane tab;
 	
 	JPanel info;
-	JLabel lblMenu;
-	JLabel lblTotal;
+	//JLabel lblMenu;
+	//JLabel lblTotal;
 	
 	JLabel lblCal = new JLabel("", JLabel.RIGHT);
 	Calendar calendar;
 	
 	JButton btnStop;
 	JButton btnPay;
+	
+	int btnsCnt = 0;
 	
 	//
 	public cafePosView() {
@@ -63,6 +66,7 @@ public class cafePosView extends JPanel implements Runnable{
 		tab = new JTabbedPane(JTabbedPane.TOP);
 		btnsHeaders = new ArrayList<>();
 		btnNames = new ArrayList<>();
+		btns = new ArrayList<JButton>();
 		//메뉴 선택 탭
 		
 		//
@@ -72,13 +76,13 @@ public class cafePosView extends JPanel implements Runnable{
 		
 		//
 		info = new JPanel(new GridLayout(4, 2));
-		lblMenu = new JLabel("안녕");
-		lblTotal = new JLabel("테스트야");
+		//lblMenu = new JLabel("안녕");
+		//lblTotal = new JLabel("테스트야");
 		//
 		
 		info.setBackground(Color.yellow);
-		info.add(lblMenu);
-		info.add(lblTotal);
+		//info.add(lblMenu);
+		//info.add(lblTotal);
 		//정보 패널
 		
 		//그리드백 배치
@@ -169,19 +173,30 @@ public class cafePosView extends JPanel implements Runnable{
 	
 	//메뉴 타입별로 메뉴 버튼 만들기
 	public void setMenu(int i) {
+		
 		pans = new JPanel[btnsHeaders.size()];
 		
 		pans[i] = new JPanel(new GridLayout(0, 4));
-		
-		JButton[] btns = new JButton[btnNames.size()];
 			
 		for (int j = 0; j < btnNames.size(); j++) {
-			btns[j] = new JButton(btnNames.get(j));
+			btns.add(new JButton(btnNames.get(j)));
 				
-			pans[i].add(btns[j]);
+			pans[i].add(btns.get(btnsCnt));
+			btnsCnt++;
 		}
 		
 		tab.add(btnsHeaders.get(i), pans[i]);
+		
 	}
 
+	//메뉴버튼 보내기
+	public ArrayList<JButton> getMenuBtns(){
+		return btns;
+	}
+	
+	//결과 패널 보내기
+	public JPanel getResultPan() {
+		return info;
+	}
+	
 }

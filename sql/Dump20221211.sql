@@ -4,7 +4,7 @@ USE `cafe_pos`;
 --
 -- Host: localhost    Database: cafe_pos
 -- ------------------------------------------------------
--- Server version	8.0.30
+-- Server version	8.0.31
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -39,7 +39,7 @@ CREATE TABLE `ingredient` (
 
 LOCK TABLES `ingredient` WRITE;
 /*!40000 ALTER TABLE `ingredient` DISABLE KEYS */;
-INSERT INTO `ingredient` VALUES ('BEAN','원두','2022-12-23'),('DOUGH','생지','2023-01-01');
+INSERT INTO `ingredient` VALUES ('BEAN','원두','2022-12-23'),('CIDE','사이다','2023-02-02'),('C_BR','원액','2022-12-22'),('DOUGH','생지','2023-01-01'),('EGG','에그샐러드','2022-12-15'),('KIWI','키위','2022-12-22'),('LEMON','레몬청','2022-12-22'),('MANGO','망고','2022-12-23'),('MILK','우유','2022-12-15'),('SAND','샌드위치 빵','2022-12-23'),('ST_BER','딸기','2022-12-15');
 /*!40000 ALTER TABLE `ingredient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -64,7 +64,7 @@ CREATE TABLE `inventory` (
 
 LOCK TABLES `inventory` WRITE;
 /*!40000 ALTER TABLE `inventory` DISABLE KEYS */;
-INSERT INTO `inventory` VALUES ('BEAN',3),('DOUGH',2);
+INSERT INTO `inventory` VALUES ('BEAN',3),('C_BR',3),('DOUGH',2),('EGG',3),('KIWI',3),('LEMON',3),('MANGO',3),('MILK',3),('SAND',3),('ST_BER',3);
 /*!40000 ALTER TABLE `inventory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -80,6 +80,7 @@ CREATE TABLE `menu` (
   `menu_name` varchar(50) NOT NULL,
   `type_id` int NOT NULL,
   `sold_out` tinyint NOT NULL,
+  `price` int NOT NULL,
   PRIMARY KEY (`menu_id`),
   UNIQUE KEY `menu_name_UNIQUE` (`menu_name`),
   KEY `FK_MENU_TYPE` (`type_id`),
@@ -93,7 +94,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES ('AD_LE','레모네이드',2,0),('AD_MA','망고에이드',2,0),('AME_H','핫 아메리카노',1,1),('AME_I','아이스 아메리카노',1,1),('B_KIW','키위 쥬스',3,0),('B_MILK','우유',3,0),('CROF','크로플',4,0),('C_BR','콜드브루',1,0),('SM_ST','딸기 스무디',2,0),('SW_EG','에그 샌드위치',4,1),('SW_ST','딸기 샌드위치',4,1);
+INSERT INTO `menu` VALUES ('AD_LE','레모네이드',2,0,2500),('AD_MA','망고에이드',2,0,2500),('AME_H','핫 아메리카노',1,0,1900),('AME_I','아이스 아메리카노',1,0,1900),('B_KIW','키위 쥬스',3,0,4000),('B_MILK','우유',3,0,1500),('CROF','크로플',4,0,1700),('C_BR','콜드브루',1,0,3000),('SM_ST','딸기 스무디',2,0,2500),('SW_EG','에그 샌드위치',4,0,3000),('SW_ST','딸기 샌드위치',4,0,3000);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +110,7 @@ CREATE TABLE `menu_type` (
   `type_name` varchar(50) NOT NULL,
   PRIMARY KEY (`type_id`),
   UNIQUE KEY `type_name_UNIQUE` (`type_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +167,7 @@ CREATE TABLE `recipe` (
   KEY `FK_REC_INGID_idx` (`ing_id`),
   CONSTRAINT `FK_REC_INGID` FOREIGN KEY (`ing_id`) REFERENCES `ingredient` (`ing_id`),
   CONSTRAINT `FK_REC_MENUID` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +176,7 @@ CREATE TABLE `recipe` (
 
 LOCK TABLES `recipe` WRITE;
 /*!40000 ALTER TABLE `recipe` DISABLE KEYS */;
-INSERT INTO `recipe` VALUES (1,'CROF','DOUGH'),(2,'AME_H','BEAN'),(3,'AME_I','BEAN');
+INSERT INTO `recipe` VALUES (1,'CROF','DOUGH'),(2,'AME_H','BEAN'),(3,'AME_I','BEAN'),(4,'AD_LE','LEMON'),(5,'AD_LE','CIDE'),(6,'AD_MA','MANGO'),(7,'AD_MA','CIDE'),(8,'SM_ST','MILK'),(9,'SM_ST','ST_BER'),(10,'SW_EG','EGG'),(11,'SW_EG','SAND'),(12,'SW_ST','ST_BER'),(13,'SW_ST','SAND');
 /*!40000 ALTER TABLE `recipe` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -217,4 +218,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-11 13:47:19
+-- Dump completed on 2022-12-11 16:06:20
