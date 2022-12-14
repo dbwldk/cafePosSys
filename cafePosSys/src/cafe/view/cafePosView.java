@@ -1,11 +1,14 @@
 package cafe.view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -32,13 +35,13 @@ public class cafePosView extends JPanel implements Runnable{
 	JTabbedPane tab;
 	
 	JPanel info;
-	//JLabel lblMenu;
-	//JLabel lblTotal;
 	
 	JLabel lblCal = new JLabel("", JLabel.RIGHT);
 	Calendar calendar;
+	String datetime;
 	
 	JButton btnStop;
+	JButton btnRst;
 	JButton btnPay;
 	
 	int btnsCnt = 0;
@@ -71,26 +74,24 @@ public class cafePosView extends JPanel implements Runnable{
 		
 		//
 		btnStop = new JButton("운영 일시중지");
+		btnRst = new JButton("리셋");
 		btnPay = new JButton("결제");
 		//버튼
 		
 		//
-		info = new JPanel(new GridLayout(4, 2));
-		//lblMenu = new JLabel("안녕");
-		//lblTotal = new JLabel("테스트야");
+		info = new JPanel(new GridLayout(0, 1));
 		//
 		
 		info.setBackground(Color.yellow);
-		//info.add(lblMenu);
-		//info.add(lblTotal);
 		//정보 패널
 		
 		//그리드백 배치
 		lay(lblCal, 9, 0, 10, 1);
 		lay(tab, 1, 1, 7, 7);
-		lay(btnStop, 1, 9, 3, 2);
-		lay(btnPay, 4, 9, 3, 2);
-		lay(info, 9, 2, 6, 9);
+		lay(btnStop, 1, 9, 2, 2);
+		lay(btnRst, 3, 9, 2, 2);
+		lay(btnPay, 6, 9, 2, 2);
+		lay(info, 10, 2, 6, 9);
 		
 		//쓰레드
 		Thread t = new Thread(this);
@@ -106,19 +107,16 @@ public class cafePosView extends JPanel implements Runnable{
 		add(obj, c);
 	}
 	
-	
 	//시계
 	@Override
 	public void run() {
 		while (true) {
 			calendar = Calendar.getInstance();
-			int month = calendar.get(Calendar.MONTH);
-			int day = calendar.get(Calendar.DATE);
-			int hour = calendar.get(Calendar.HOUR_OF_DAY);
-			int minute = calendar.get(Calendar.MINUTE);
-			int second = calendar.get(Calendar.SECOND);
 			
-			lblCal.setText((month + 1) + "월" + day + "일 " + hour + ":" + minute + ":" + second);
+			SimpleDateFormat df = new SimpleDateFormat("YYYY-MM-dd hh:mm:ss");
+			
+			lblCal.setText(df.format(calendar.getTime()));
+			datetime = df.format(calendar.getTime());
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -127,15 +125,25 @@ public class cafePosView extends JPanel implements Runnable{
 		}
 	}
 	
+	//시간 넘기기
+	public String getTime() {
+		return datetime;
+	}
+	
 	//버튼 넘기기: stop
 	public JButton getBtnStop() {
 		return btnStop;
 	}
 	
+	//버튼 넘기기: reset
+	public JButton getBtnRst() {
+		return btnRst;
+	}
+	
 	//버튼 넘기기: pay
-		public JButton getBtnPay() {
-			return btnPay;
-		}
+	public JButton getBtnPay() {
+		return btnPay;
+	}
 	
 	//volist 설정하기
 	public void setCafeVOList(ArrayList<cafeVO> cafeVOList) {
@@ -159,7 +167,7 @@ public class cafePosView extends JPanel implements Runnable{
 		return btnsHeaders;
 	}
 	
-	//메뉴 버튼 설정하기
+	//메뉴 버튼 이름 설정하기
 	public void setMenuBtns() {
 			cafeVO vo = null;
 			btnNames.clear();
